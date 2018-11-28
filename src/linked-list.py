@@ -46,7 +46,7 @@ class LinkedList:
                     return currentItem.value
                 currentItem = currentItem.nextItem
                 currentIndex += 1
-
+            return None
 
 list = LinkedList()
 item1 = LinkedItem("dog")
