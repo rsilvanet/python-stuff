@@ -1,5 +1,4 @@
 class LinkedItem:
-    previousItem = None    
     nextItem = None
     value = ""
 
@@ -11,49 +10,46 @@ class LinkedList:
     lastItem = None
     size = 0
 
-    def add(self, item):
+    def add(self, value):
+        item = LinkedItem(value)
         if self.firstItem == None:
             self.firstItem = item
             self.lastItem = item
         else:
-            item.previous = self.lastItem
             self.lastItem.nextItem = item
             self.lastItem = item
         self.size += 1 
     
     def show(self):
         if self.firstItem == None:
-            return "Empty"
+            print("Empty")
+            return
         else:
-            content = ""
             currentItem = self.firstItem
-            content = currentItem.value + " -> "
+            content = "start -> " + currentItem.value + " -> "
             while currentItem.nextItem != None:
                 currentItem = currentItem.nextItem
-                content += currentItem.value
-                if currentItem.nextItem != None:
-                    content += " -> "
+                content += currentItem.value + " -> "
+            content += "end"
         print(content)
 
     def get(self, index):
-        if self.firstItem == None:
-            return None
-        else:
-            currentItem = self.firstItem
-            currentIndex = 0
-            while currentItem.nextItem != None:
-                if (currentIndex == index):
-                    return currentItem.value
-                currentItem = currentItem.nextItem
-                currentIndex += 1
-            return None
+        currentItem = self.firstItem
+        currentIndex = 0
+        while currentItem != None:
+            if (currentIndex == index):
+                return currentItem.value
+            currentItem = currentItem.nextItem
+            currentIndex += 1
+        return None
 
 list = LinkedList()
-item1 = LinkedItem("dog")
-item2 = LinkedItem("cat")
-item3 = LinkedItem("bird")
-list.add(item1)
-list.add(item2)
-list.add(item3)
 list.show()
-print(list.get(1))
+print("Adding items...")
+list.add("dog")
+list.add("cat")
+list.add("bird")
+list.add("fish")
+list.show()
+print("The #1 item is: " + list.get(1))
+print("The #3 item is: " + list.get(3))
