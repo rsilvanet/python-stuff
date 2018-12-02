@@ -24,8 +24,8 @@ class Stack:
         else:
             temp = self.topItem
             self.topItem = self.topItem.nextItem
+            self.size -= 1
             return temp.value
-        self.size -= 1
 
     def show(self):
         if self.topItem == None:
@@ -41,12 +41,17 @@ class Stack:
         print(content)
 
 stack = Stack()
+stack.show()
+print("Stacking items...")
 stack.push("dog")
 stack.push("cat")
 stack.push("bird")
 stack.show()
-print("Pop:" + stack.pop())
-print("Pop:" + stack.pop())
+print("The stack size now is: " + `stack.size`)
+print("Popping: " + stack.pop())
+print("Popping: " + stack.pop())
+print("The stack size now is: " + `stack.size`)
 stack.show()
-print("Pop:" + stack.pop())
+print("Popping: " + stack.pop())
+print("The stack size now is: " + `stack.size`)
 stack.show()
