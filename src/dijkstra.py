@@ -15,6 +15,7 @@ costs["b"] = 2
 costs["end"] = float("inf")
 
 parents = {}
+parents["start"] = None
 parents["a"] = "start"
 parents["b"] = "start"
 parents["end"] = None
@@ -24,7 +25,7 @@ processed = []
 def getLowerCostNode(costs):
     lowerCost = float("inf")
     lowerCostNode = None
-    for node in costs:
+    for node in costs.keys():
         cost = costs[node]
         if cost < lowerCost and node not in processed:
             lowerCost = cost
@@ -43,3 +44,12 @@ while node is not None:
             parents[child] = node
     processed.append(node)
     node = getLowerCostNode(costs)
+
+aux = "end"
+sequence = []
+
+while aux <> None:
+    sequence.insert(0, aux)
+    aux = parents[aux]
+
+print(sequence)
