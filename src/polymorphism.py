@@ -1,5 +1,5 @@
 class Door:
-    color = 'colorless'
+    color = ''
     
     def __init__(self, color):
         self.color = color
@@ -32,7 +32,7 @@ class Person:
         self.home = home
 
     def describe(self):
-        return 'My name is ' + self.name + ' and I live in ' + self.home.describe()
+        return 'My name is ' + self.name + ' and I live in ' + self.home.describe() + '.'
 
 door = Door('black')
 house = House(door, 75)
