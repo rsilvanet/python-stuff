@@ -1,12 +1,19 @@
-from flask import Flask
+from flask import Flask, request
 from flask_restful import Resource, Api
 
 app = Flask(__name__)
 api = Api(app)
 
+values = []
+
 class Values(Resource):
+
     def get(self):
-        return [ "value1", "value2" ]
+        return values
+    
+    def post(self):
+        values.append(request.json["value"])
+        return values,201
 
 api.add_resource(Values, "/api/values")
 
